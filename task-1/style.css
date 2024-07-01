@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+:root{
+    --black-color: #000000f1;
+    --dim-gray:#5C5C5C;
+    --silver: #F2F2F2;
+    --ghost-white: #F8F9FA;
+    --blue-col: #4C6FF5;
+    --line-color: #E0E0E0;
+    --orange: #E56135;
+    --green-col: #02B875;
+    --light-green: #008A45;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.left-padd{
+    padding-left: 12.5rem;
+}
+.nav-padd{
+    padding-left: 72px !important;
+    padding-right: 72px;
+}
+a:link{
+    text-decoration: none;
+    color: #000000;
+}
+
+body{
+    font-family: "IBM Plex Sans", sans-serif;
+    background-color: var(--ghost-white);
+}
+
+.nav{
+    height: 72px;
+    padding-left: 72px;
+}
+
+.mobile-nav {
+    background: var(--silver);
+    height: 34px;
+    display: none;
+}
+.mobile-nav ul{
+    margin-right: 43px;
+    list-style: none;
+}
+.mobile-nav ul li{
+    padding-left: 16px;
+    color: var(--dim-gray);
+}
+
+.search-box{
+    width: 360px;
+    height: 42px;
+    background-color: var(--silver) ;
+    color: var(--dim-gray);
+    padding:10px 0;
+    padding-left: 14px;
+    border-radius: 21px;
+}
+
+.search-icon{
+    width: 22px;
+    height: 22px;
+    font-size: 14px;
+    margin: auto;
+
+}
+
+.search-box input{
+    outline: 0;
+    border: 0;
+    background: none;
+    width: 90%;
+    font-size: 16px;
+    line-height: 18.2px;
+    color: var(--dim-gray);
+    padding-left: 14px;
+}
+
+.create-account p{
+    font-weight: 500;
+    line-height: 20.8px;
+    margin: auto;
+    line-height: 20.8px;
+}
+.create-account span{
+    font-weight: 600;
+    color: var(--blue-col);
+}
+
+.create-text a{
+    color: var(--blue-col);
+}
+.signup-text a{
+    color: var(--blue-col);
+}
+
+.hero-section{
+    background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(./images/Rectangle\ 2.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 440px;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.hero-btn,.grp-btn{
+    display: none !important;
+}
+
+.hero-btns{
+    display: none !important;
+}
+.hero-btn{
+    color: var(--ghost-white);
+}
+
+.hero-text{
+    padding-top: 288px;
+    padding-bottom: 80px;
+}
+.hero-text h1{
+    width: 378px;
+    height: 40px;
+    font-size: 36px;
+}
+.hero-text p{
+    font-size: 18px;
+    line-height: 23.4px;
+}
+
+.entry ul li a{
+    margin-right: 12px;
+    height: 100%;
+    color: var(--dim-gray);
+    position: relative;
+}
+.entry ul li a::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: black;
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+}
+.entry ul li a:hover:after,
+.entry ul li a.active:after{
+    width: 100%;
+}
+.entry ul li a.active{
+    color: var(--black-color);
+}
+
+.btn-div{
+    margin-top: 8px;
+}
+.entry .post-btn{
+    background: 1px solid var(--dim-gray);
+}
+
+.filter-the-post{
+    display: none !important;
+}
+
+.filter-type{
+    width: 101px;
+    color: white;
+    padding: 9px;
+    background-color: var(--silver);
+    display: none !important;
+}
+.filter-type a{
+    color: black;
+    display: block;
+}
+.filter-type a:hover{
+    background: 2px solid var(--dim-gray);
+}
+
+.content{
+    margin:0 200px;
+    height: auto;
+}
+.entry-nav{
+    margin:0 200px;
+}
+
+.line{
+    margin: 0 200px;
+    border: 1.5px solid var(--line-color);
+}
+
+.all-posts{
+    width: 60%;
+    height: 1751px;
+}
+
+.people-n-info {
+    width: 40%;
+    margin-left: auto;
+}
+
+.user-info{
+    width: 50%;
+}
+.user-info p{
+    margin-left: 20px;
+    margin-top: 7px;
+}
+
+.user-img{
+    width: 21px;
+    height: 21px;
+}
+
+.description{
+    font-size: 18px;
+}
+
+.share{
+    width: 47px;
+    height: 38px;
+    border-radius: 5px;
+    background-color: var(--silver);
+}
+
+.meetup{
+    width: 95% !important;
+    color: var(--orange);
+}
+.jobs{
+    width: 95% !important;
+    color: var(--green-col);
+}
+
+.fill-location input{
+    outline: 0;
+    border: 0;
+    background: none;
+}
+
+.location-line{
+    width: 90%;
+}
+
+.location-desc{
+    color: var(--dim-gray);
+}
+
+.group-text{
+    letter-spacing: 2px;
+}
+
+.follow-btn{
+    background-color: var(--silver);
+    width: 70px;
+    height: 35px;
+}
+
+/* sign in  */
+
+.signin-overlay, .signup-overlay{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    z-index: 10000;
+    visibility: hidden;
+    background: linear-gradient(0,0,0,0.5 #000);
+}
+.signin-div, .signup-div{
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    width: 780px;
+    height: 78vh;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    visibility: hidden;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: var(--ghost-white);
+}
+
+.form-field input{
+    display: block;
+    width: 100%;
+}
+
+.sign-in-form, .create-new{
+    width: 50% !important;
+}
+
+.pass-field,.new-acc{
+    display: none;
+}
+
+.laptop-btn{
+    width: 100%;
+}
+
+.-signup-cross, .login-cross{
+    position: absolute;
+    top: -22px;
+    right: -14px;
+    color: white;
+    cursor: pointer;
+}
+
+.visible{
+    display: block !important;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+.form-text{
+    height: 50px;
+    color: var(--light-green);
+    background-color: rgb(236, 250, 234);
+}
+
+.name-field{
+    padding: 0;
+}
+.name-field input{
+    display: inline;
+    width: 48.4%;
+    padding: 11px;
+}
+
+.form-field input{
+    padding: 10px;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .left-padd{
+        padding-left: 10rem;
+    }
+    .nav-padd{
+        padding-left: 60px !important;
+        padding-right: 60px;
+    }
+    .hero-text h1 {
+        width: 340px;
+        font-size: 32px;
+    }
+    .hero-text p {
+        font-size: 16px;
+    }
+    .content{
+        margin:0 160px;
+    }
+    .entry-nav{
+        margin:0 160px;
+    }
+    .group-people{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .user-info p{
+        margin-left: 10px !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .mobile-nav{
+        display: inherit;
+    }
+
+    .nav{
+        visibility: hidden;
+        display: none !important;
+    }
+
+    .left-padd{
+        padding-left: 120px;
+    }
+    .hero-section{
+        margin-top: 0;
+        top: 0;
+    }
+
+    .leave-btn{
+        display: none;
+    }
+
+    .all-posts{
+        width: 100%;
+        height: 1751px;
+    }
+    
+    .hero-text h1 {
+        width: 300px;
+        font-size: 28px;
+    }
+    .hero-text p {
+        font-size: 14px;
+    }
+
+    .content{
+        margin:0 120px
+    }
+
+    .line, .entry, .people-n-info {
+        display: none !important;
+    }
+    .group-people{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .user-info p{
+        margin-left: 10px !important;
+    }
+    
+}
+
+@media (max-width: 768px) {
+
+    .hero-section{
+        background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(./images/Rectangle\ 2.1.svg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .btn-div{
+        display: none;
+        justify-content: flex-start;
+    }
+
+    .filter-the-post{
+        display: inherit !important;
+    }
+
+    .hero-btns{
+        display: inherit !important;
+    }
+
+    .left-padd{
+        padding-left: 5rem;
+    }
+    .nav-padd{
+        padding-left: 40px !important;
+        padding-right: 40px;
+    }
+    .hero-text h1 {
+        width: 260px;
+        font-size: 24px;
+    }
+    .hero-text p {
+        font-size: 12px;
+    }
+    .content {
+        margin:0;
+    }
+
+    .signin-div{
+        position: absolute;
+        top: 67%;
+        width: 750px;
+        height: 89vh;
+        transform: translate(-50%, -50%);
+        z-index: 10000;
+        visibility: hidden;
+        border: 2px solid black;
+        background: linear-gradient(0,0,0,0.2);
+    }
+    .signup-div{
+        top: 62%;
+    }
+
+    .quote{
+        display: none;
+    }
+
+    .create-new{
+        display: none !important;
+    }
+
+    .new-acc{
+        display: inherit;
+    }
+    .sign-in-form{
+        width: 60% !important;
+        margin: auto !important;
+    }
+    
+    .pass-field{
+        display: block;
+    }
+    .pass-field input{
+        padding: 8px;
+        width: 100%;
+    }
+
+    .form-field{
+        margin-top: 0;
+    }
+
+    .laptop-btn{
+        width: 50%;
+    }
+    
+    .signup-cross, .login-cross{
+        position: absolute;
+        top: 17px;
+        right: 49%;
+        color: black;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .left-padd{
+        padding-left: 2rem;
+    }
+    .nav-padd{
+        padding-left: 20px !important;
+        padding-right: 20px;
+    }
+
+    .hero-text h1 {
+        width: 220px;
+        font-size: 20px;
+    }
+    .hero-text p {
+        font-size: 10px;
+    }
+    
+}
