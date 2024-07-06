@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll Animation with GSAP and Locomotive Scroll</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+    <!-- GSAP (TweenMax) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <!-- ScrollMagic GSAP plugin (for animations) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- ScrollToPlugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+      integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+      integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+      integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="chat bg-chat-icon">
+      <i class="bi bi-chat-right-dots"></i>
+    </div>
+
+    <div class="notification-card" id="notificationCard">
+      <h2>...!! Maintenance !!...</h2>
+      <p>website is under maintenance</p>
+      <button onclick="closeNotification()">Close</button>
+    </div>
+
+    <div class="svg-div">
+      <div class="fixed-svg">
+        <svg
+          version="1.1"
+          id="transring"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 414 414"
+          style="
+            enable-background: new 0 0 414 414;
+            background-color: transparent;
+          "
+          xml:space="preserve"
+        >
+          <path
+            id="Transparent_Ring"
+            class="transrg"
+            style="
+              opacity: 0.4;
+              fill: none;
+              stroke: #ffffff;
+              stroke-width: 2;
+              stroke-miterlimit: 10;
+              enable-background: new;
+            "
+            d="M84.2,85c31.3-31.5,74.7-51,122.7-51c95.5,0,173,77.5,173,173s-77.5,173-173,173c-47.8,0-91-19.4-122.3-50.7"
+          ></path>
+          <path
+            id="Opaque_Ring"
+            class="transrgwht"
+            stroke-dasharray="0,1000"
+            style="
+              fill: none;
+              stroke: rgb(255, 255, 255);
+              stroke-width: 2;
+              stroke-miterlimit: 10;
+              stroke-dasharray: 10, 1000;
+            "
+            d="M84.2,85c31.3-31.5,74.7-51,122.7-51c95.5,0,173,77.5,173,173s-77.5,173-173,173c-47.8,0-91-19.4-122.3-50.7"
+          ></path>
+          <g id="Dots1" class="dots-nav" data-target="#page-1">
+            <g>
+              <path
+                class="dotsst dotsfill1 dot"
+                style="fill: rgb(0, 146, 255); opacity: 1"
+                d="M84,80c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S87,80,84,80z"
+              ></path>
+            </g>
+            <g>
+              <path
+                class="dotsstro1"
+                style="
+                  opacity: 1;
+                  fill: none;
+                  stroke: rgb(255, 255, 255);
+                  stroke-width: 2;
+                  stroke-miterlimit: 10;
+                "
+                d="M84,80c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S87,80,84,80z"
+              ></path>
+            </g>
+          </g>
+          <g id="Dots2" class="dots-nav" data-target="#page-2">
+            <g>
+              <path
+                class="dotsst dotsfill2 dot"
+                style="fill: rgb(0, 146, 255); opacity: 1"
+                d="M206.8,29c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S210.1,29,206.8,29z"
+              ></path>
+            </g>
+            <g>
+              <path
+                class="dotsstro2"
+                style="
+                  opacity: 1;
+                  fill: none;
+                  stroke: rgb(255, 255, 255);
+                  stroke-width: 2;
+                  stroke-miterlimit: 10;
+                "
+                d="M206.8,29c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S210.1,29,206.8,29z"
+              ></path>
+            </g>
+          </g>
+          <g id="Dots3" class="dots-nav" data-target="#page-3">
+            <g>
+              <path
+                class="dotsst dotsfill3 dot"
+                style="fill: rgb(0, 146, 255); opacity: 1"
+                d="M332,85c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S335,85,332,85z"
+              ></path>
+            </g>
+            <g>
+              <path
+                class="dotsstro3"
+                style="
+                  opacity: 1;
+                  fill: none;
+                  stroke: rgb(255, 255, 255);
+                  stroke-width: 2;
+                  stroke-miterlimit: 10;
+                "
+                d="M332,85c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S335,85,332,85z"
+              ></path>
+            </g>
+          </g>
+          <g id="Dots4" class="dots-nav" data-target="#page-4">
+            <g>
+              <path
+                class="dotsst dotsfill4 dot"
+                style="fill: rgb(0, 146, 255); opacity: 1"
+                d="M380,205c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S383,205,380,205z"
+              ></path>
+            </g>
+            <g>
+              <path
+                class="dotsstro4"
+                style="
+                  opacity: 1;
+                  fill: none;
+                  stroke: rgb(255, 255, 255);
+                  stroke-width: 2;
+                  stroke-miterlimit: 10;
+                "
+                d="M380,205c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S383,205,380,205z"
+              ></path>
+            </g>
+          </g>
+          <g id="Dots5" class="dots-nav" data-target="#page-5">
+            <g>
+              <path
+                class="dotsst dotsfill5 dot"
+                style="fill: rgb(0, 146, 255); opacity: 1"
+                d="M335,315c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S340,315,335,315z"
+              ></path>
+            </g>
+            <g>
+              <path
+                class="dotsstro5"
+                style="
+                  opacity: 1;
+                  fill: none;
+                  stroke: rgb(255, 255, 255);
+                  stroke-width: 2;
+                  stroke-miterlimit: 10;
+                "
+                d="M335,315c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S340,315,335,315z"
+              ></path>
+            </g>
+          </g>
+          <g id="Dots6" class="dots-nav" data-target="#page-6">
+            <g>
+              <path
+                class="dotsst dotsfill6 dot"
+                style="fill: rgb(0, 146, 255); opacity: 1"
+                d="M210,375c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S215,375,210,375z"
+              ></path>
+            </g>
+            <g>
+              <path
+                class="dotsstro6"
+                style="
+                  opacity: 1;
+                  fill: none;
+                  stroke: rgb(255, 255, 255);
+                  stroke-width: 2;
+                  stroke-miterlimit: 10;
+                "
+                d="M210,375c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S215,375,210,375z"
+              ></path>
+            </g>
+          </g>
+          <g id="Dots7" class="dots-nav" data-target="#page-7">
+            <g>
+              <path
+                class="dotsst dotsfill7 dot"
+                style="fill: rgb(0, 146, 255); opacity: 1"
+                d="M88,324c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S92,324,88,324z"
+              ></path>
+            </g>
+            <g>
+              <path
+                class="dotsstro7"
+                style="
+                  opacity: 1;
+                  fill: none;
+                  stroke: rgb(255, 255, 255);
+                  stroke-width: 2;
+                  stroke-miterlimit: 10;
+                "
+                d="M88,324c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6-6S92,324,88,324z"
+              ></path>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="pages">
+      <div id="page-1" class="page item">
+        <div class="left-part bg-purply d-flex align-items-end" id="left-1">
+          <div class="circle bg-purply"></div>
+          <p class="tag">
+            <span><b>25M+ Downloads </b></span><br />
+            on appstore & google playstore
+          </p>
+          <img class="abc-logo" src="./images/abc.png" alt="company badge" />
+          <div class="desc ms-5 mb-4">
+            <h1><b>ABC 123</b></h1>
+            <p>
+              we are the best web development <br />
+              company in the world
+            </p>
+          </div>
+          <p class="subject-info">
+            View Case Study &nbsp;<i class="bi bi-arrow-right"></i>
+          </p>
+          <div class="skip">
+            <h6>SKIP</h6>
+          </div>
+        </div>
+        <div class="right-part bg-white-shade" id="right-1">
+          <div class="abc-imgs d-flex">
+            <img
+              class="abc-img"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              src="./images/abc-img-1.png"
+              alt=""
+            />
+            <img
+              class="abc-img"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/abc-img-2.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <!-- page2 ------------------------------------------------------------------------------------------>
+      <div id="page-2" class="page item">
+        <div class="left-part bg-blue-moist" id="left-2">
+          <div class="circle bg-blue-moist"></div>
+          <p class="tag-1">The Next Big</p>
+          <p class="tag-2">
+            <span><b>Blockchain </b></span><br />
+            Revolution
+          </p>
+          <div class="desc ms-5 mb-4">
+            <h1><b>ABC 123</b></h1>
+            <p>
+              we are the best web development <br />
+              company in the world
+            </p>
+          </div>
+          <p class="subject-info">
+            Coming Soon &nbsp;<i class="bi bi-arrow-right"></i>
+          </p>
+          <div class="skip">
+            <h6>SKIP</h6>
+          </div>
+        </div>
+        <div class="right-part bg-bluish overflow-hidden" id="right-2">
+          <div class="sec-page-img">
+            <img
+              class="sec-page-img-1"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/blockchain.png"
+              alt=""
+            />
+            <img
+              class="sec-page-img-2"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              src="./images/veme-app-ui-design.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- page3 ------------------------------------------------------------------------------------------>
+      <div id="page-3" class="page item">
+        <div class="left-part bg-blue-dark" id="left-3">
+          <div class="circle bg-blue-dark"></div>
+          <div class="nasa">
+            <p>Powered by advance</p>
+            <img src="./images/nasa-mobile-app.png" alt="" />
+          </div>
+          <p class="nasa-p">algorithms</p>
+          <div class="desc ms-5 mb-4">
+            <h1><b>ABC 345</b></h1>
+            <p>
+              we are the best web development <br />
+              company in the world
+            </p>
+          </div>
+          <p class="subject-info">
+            Coming Soon &nbsp;<i class="bi bi-arrow-right"></i>
+          </p>
+          <div class="skip">
+            <h6>SKIP</h6>
+          </div>
+        </div>
+        <div class="right-part bg-moist-black overflow-hidden" id="right-3">
+          <div class="third-page-img d-flex">
+            <img
+              class="third-img-1"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/fitness-track.png"
+              alt=""
+            />
+            <img
+              class="third-img-2"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              src="./images/measure.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- page4 ------------------------------------------------------------------------------------------>
+      <div id="page-4" class="page item">
+        <div class="left-part bg-bluish" id="left-4">
+          <div class="circle bg-bluish"></div>
+          <p class="tag-1">Redefining&nbsp; &nbsp;&nbsp;</p>
+          <p class="tag-2">
+            <span>UX Strategy</span><br />
+            and UI design
+          </p>
+          <div class="desc ms-5 mb-4">
+            <h1><b>ABC 456</b></h1>
+            <p>
+              we are the best web development <br />
+              company in the world
+            </p>
+          </div>
+          <p class="subject-info">
+            View Case Study &nbsp;<i class="bi bi-arrow-right"></i>
+          </p>
+          <div class="skip">
+            <h6>SKIP</h6>
+          </div>
+        </div>
+        <div class="right-part bg-chat-icon overflow-hidden" id="right-4">
+          <div class="forth-page-img">
+            <img
+              class="forth-img-1"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/domi-img1.png"
+              alt=""
+            />
+            <img
+              class="forth-img-2"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              src="./images/ux.png"
+              alt=""
+            />
+            <img
+              class="forth-img-3"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              src="./images/pizza_box.png"
+              alt=""
+            />
+            <img
+              class="forth-img-4"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              src="./images/dominos-bread.png"
+              alt=""
+            />
+            <img
+              class="forth-img-5"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/dominos-bread1.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- page5 ------------------------------------------------------------------------------------------>
+      <div id="page-5" class="page item">
+        <div class="left-part bg-royal-blue" id="left-5">
+          <div class="circle bg-royal-blue"></div>
+          <p class="tag-1">Text Headline</p>
+          <p class="tag-2">
+            <span><b>Text Headline </b></span><br />
+            Footer Headline
+          </p>
+          <div class="desc ms-5 mb-4">
+            <h1><b>ABC 567</b></h1>
+            <p>
+              we are the best web development <br />
+              company in the world
+            </p>
+          </div>
+          <p class="subject-info">
+            View Case Study &nbsp;<i class="bi bi-arrow-right"></i>
+          </p>
+          <div class="skip">
+            <h6>SKIP</h6>
+          </div>
+        </div>
+        <div class="right-part bg-sky-blu overflow-hidden" id="right-5">
+          <div class="fifth-page-img">
+            <img
+              class="fifth-img-1"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/karavan.png"
+              alt=""
+            />
+            <img
+              class="fifth-img-2"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/social.png"
+              alt=""
+            />
+            <img
+              class="fifth-img-3"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              src="./images/karavan_2.png"
+              alt=""
+            />
+            <img
+              class="fifth-img-4"
+              data-aos="fade-down"
+              data-aos-duration="1500"
+              src="./images/networking.png"
+              alt=""
+            />
+            <img
+              class="fifth-img-5"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+              src="./images/developers.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- page6 ------------------------------------------------------------------------------------------>
+      <div id="page-6" class="page item">
+        <div class="left-part bg-royal-navy" id="left-6">
+          <div class="circle bg-royal-navy"></div>
+          <p class="tag-1">Text Headline</p>
+          <p class="tag-2">
+            <span><b>Text Headline </b></span><br />
+            Footer Headline
+          </p>
+          <div class="desc ms-5 mb-4">
+            <h1><b>ABC 678</b></h1>
+            <p>
+              we are the best web development <br />
+              company in the world
+            </p>
+          </div>
+          <p class="subject-info">
+            View Case Study &nbsp;<i class="bi bi-arrow-right"></i>
+          </p>
+          <div class="skip">
+            <h6>SKIP</h6>
+          </div>
+        </div>
+        <div
+          class="right-part bg-royal-blue sixth-bg overflow-hidden"
+          id="right-6"
+        >
+          <div class="sixth-page-img d-flex">
+            <img
+              class="sixth-img-1"
+              data-aos="fade-up"
+              data-aos-duration="500"
+              src="./images/app-dev.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- page7 ------------------------------------------------------------------------------------------>
+      <div id="page-7" class="page item">
+        <div class="left-part bg-green-dark" id="left-7">
+          <div class="circle bg-green-dark"></div>
+          <p class="tag-1">Biggest Classified</p>
+          <p class="tag-2">
+            <span><b>East Asia </b></span><br />
+            Countries
+          </p>
+          <img
+            class="abc-logo"
+            src="./images/entrepeneur.png"
+            alt="company badge"
+          />
+          <div class="desc ms-5 mb-4">
+            <h1><b>ABC 123</b></h1>
+            <p>
+              we are the best web development <br />
+              company in the world
+            </p>
+          </div>
+          <p class="subject-info">
+            View Case Study &nbsp;<i class="bi bi-arrow-right"></i>
+          </p>
+          <div class="skip">
+            <h6>SKIP</h6>
+          </div>
+        </div>
+        <div class="right-part bg-green-moist overflow-hidden" id="right-7">
+          <div class="seventh-page-img d-flex">
+            <img class="seventh-img-1" src="./images/melltoo-img2.png" alt="" />
+            <img
+              class="seventh-img-2"
+              data-aos="fade-up"
+              data-aos-duration="500"
+              src="./images/melltoo-img1.png"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 120,
+        duration: 1000,
+        delay: 400,
+      });
+    </script>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
